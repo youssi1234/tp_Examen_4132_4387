@@ -1,3 +1,33 @@
-- creer les tables dans la base de donnee  db_s2_ETU004132
+O inscription .php
+    . formulaire : nom, ddns , email, ville , genre, mdp
+    . fonction : 
+         - verif : si déjà existant => true => formulaire.php 
+                       else => fonction insert 
 
-- page login
+O formulaire.php
+    . formulaire : nom, ddns, email, ville, genre, mdp
+    . fonction : 
+         - verif : si correct => true => accueil.php
+                       else =>false => erreur 
+
+O filtre.php == recherche 
+     . liste deroulante == toutes les catégories + id 
+               => trait_filtre.php : 
+                           
+
+
+
+-V2
+    O css ensemble
+
+    O upload 
+        == instagram
+
+    O Ajout d’un nouvel objet (avec upload d’image) par un membre
+        => 1ère image sera l’image principale => liste objet
+        => ajout image par defaut
+
+    O fiche 
+        _desc 
+        _images 
+        _historique image 
