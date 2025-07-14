@@ -29,7 +29,12 @@ $objet = get_liste_objet();
                         <?php foreach($objet as $donnees) { ?>
                         
                         <tr>
-                            <td><?php echo  $donnees['nom_objet']; ?></td>
+                            <td>
+                                <a href="../inc/trait_fiche.php?id_ob=<?php echo $donnees['id_objet'];?>">
+                                    <i class="bi bi-info-circle info-puce"></i> </a>
+                                <?php echo $donnees['nom_objet']; ?>
+                            </td>
+
                             <td><?php echo  $donnees['nom_categorie'];?></td>
                             <?php if ($donnees['date_retour'] != NULL) { ?>
                                 <td><?php echo  $donnees['date_retour'];?></td>

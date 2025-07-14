@@ -285,3 +285,18 @@ img {
         align-items: center; /* Centrer les boutons empilés */
     }
 }
+
+.info-puce {
+    color: #081c37; /* Couleur bleu marine pour l'icône, cohérent avec votre thème */
+    font-size: 1.2em; /* Rend l'icône légèrement plus grande que le texte environnant */
+    margin-right: 5px; /* Ajoute un petit espace entre l'icône et le texte */
+    transition: color 0.3s ease; /* Transition douce pour le changement de couleur */
+}
+
+.info-puce a :hover {
+    color: #081c37; 
+    font-size: 1.2em; 
+    margin-right: 5px; 
+    transition: color 0.3s ease; 
+    background-color: #555;
+}

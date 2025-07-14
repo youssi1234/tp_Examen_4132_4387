@@ -163,4 +163,61 @@ function get_all_obj_lib($id_cat){
     mysqli_free_result($lib_req);
     return $result;
 }
+
+
+function create_v_obj_all_lib(){
+    $sql = "CREATE OR REPLACE VIEW exam_v_obj_all_lib AS
+            SELECT
+                img.id_objet, img.nom_image         
+            FROM exam_v_obj_lib AS lib
+            LEFT JOIN exam_images_objet AS img
+            ON lib.id_objet = img.id_objet;";
+
+    if (!mysqli_query(dbconnect(), $sql)) {
+        die('Erreur lors de la création de la vue v_emp_lib : ' . mysqli_error(dbconnect()));
+    }
+}
+
+
+
+function get_obj_desc($id_obj){
+    create_v_obj_lib();
+
+    $sql = "SELECT
+            *
+            FROM exam_v_obj_lib AS lib
+            WHERE lib.id_objet = '%s';";
+
+    $query_to_execute = sprintf($sql, $id_obj);
+    $lib_req = mysqli_query(dbconnect(), $query_to_execute);
+
+    $result = array();
+    while($donnee = mysqli_fetch_assoc($lib_req)){
+        $result['nom'] = $donnee['nom'];
+        $result['nom_categorie'] = $donnee['nom_categorie'];
+        $result['nom_objet'] = $donnee['nom_objet'];
+    }
+    mysqli_free_result($lib_req);
+    return $result;
+}
+
+
+
+function get_historic_emprunt($id_obj){
+    $sql = " SELECT
+                emp.id_emprunt, emp.date_emprunt, emp.date_retour
+                from exam_emprunt as emp
+                where emp.id_objet = '%s'
+                ORDER BY emp.date_emprunt DESC;";
+
+    $query_to_execute = sprintf($sql, $id_obj);
+    $req = mysqli_query(dbconnect(), $query_to_execute);
+
+    $result = array();
+    while($donnee = mysqli_fetch_assoc($req)){
+        $result[] = $donnee;
+    }
+    mysqli_free_result($req);
+    return $result;
+}
 ?>
