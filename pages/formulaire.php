@@ -25,7 +25,7 @@
         <p><input type="password" name="mdp" placeholder="Mot de Passe"/></p>
             <input type="submit" value="Valider"/>
             <div class="sign">
-                <button><a href="../pages/inscription.php">S'inscrire</a></button>
+                <button class="action-button"><a href="../pages/inscription.php">S'inscrire</a></button>
             </div>
         </form>
     </div>

@@ -16,8 +16,8 @@ body {
     padding: 20px; /* Ajout de padding pour les petits écrans */
 }
 
-/* Styles pour le conteneur du formulaire de connexion */
-.contain { /* Renommé de .contain1 pour correspondre à votre HTML */
+/* Styles pour le conteneur du formulaire */
+.contain {
     background-color: #ffffff; /* Fond blanc pour le bloc central */
     padding: 3rem;
     border-radius: 15px;
@@ -37,23 +37,21 @@ body {
     line-height: 1.2;
 }
 
-/* Styles pour le paragraphe de bienvenue */
-.titre p {
-    font-size: 1.5rem; /* Ajustez la taille selon vos préférences */
-    color: #555; /* Couleur plus douce pour le paragraphe */
-    margin-bottom: 0.5rem;
-}
-
-/* Style pour le message d'erreur (non utilisé sur cette page mais conservé) */
-.contain h3 {
+/* Style pour le message d'erreur */
+.erreur h3 { /* Changed from .contain h3 to .erreur h3 for specificity */
     color: #dc3545; /* Rouge pour les messages d'erreur */
     margin-bottom: 1.5rem;
     font-weight: 600;
+    background-color: rgba(220, 53, 69, 0.1); /* Light red background for error */
+    padding: 10px;
+    border-radius: 5px;
 }
 
-/* Styles pour les champs de saisie du formulaire (non utilisés sur cette page mais conservés) */
+/* Styles pour tous les champs de saisie du formulaire */
+.contain form p input[type="text"],
+.contain form p input[type="password"],
 .contain form p input[type="email"],
-.contain form p input[type="password"] {
+.contain form p input[type="date"] { /* Added text and date types */
     width: calc(100% - 40px); /* Prend presque toute la largeur avec padding */
     padding: 12px 20px;
     margin-bottom: 1.5rem;
@@ -61,16 +59,27 @@ body {
     border-radius: 8px;
     font-size: 1rem;
     box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+    /* Ensure font inheritance for date input to match others */
+    font-family: inherit;
+    color: inherit;
 }
 
+.contain form p input[type="text"]:focus,
+.contain form p input[type="password"]:focus,
 .contain form p input[type="email"]:focus,
-.contain form p input[type="password"]:focus {
+.contain form p input[type="date"]:focus { /* Added text and date types */
     border-color: #081c37; /* Bordure bleue marine au focus */
     outline: none;
     box-shadow: 0 0 0 3px rgba(8, 28, 55, 0.2); /* Ombre légère au focus */
 }
 
-/* Styles pour le bouton de soumission (Valider) (non utilisés sur cette page mais conservés) */
+/* Specific styling for the calendar icon in date input for Webkit browsers */
+.contain form p input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(0.5); /* Makes the icon visible on dark backgrounds and adds contrast */
+    cursor: pointer;
+}
+
+/* Styles pour le bouton de soumission (Valider) */
 .contain form input[type="submit"] {
     background-color: #081c37; /* Bleu marine pour le fond du bouton */
     color: white;
@@ -94,56 +103,12 @@ body {
     color: #081c37; /* Texte bleu marine au survol */
 }
 
-/* Styles pour les boutons "S'inscrire" et "Se connecter" */
-.action-button {
-    background-color: #081c37; /* Bleu marine pour le fond du bouton */
-    color: white;
-    padding: 12px 30px;
-    border: 2px solid #081c37;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 10px; /* Ajout de marge pour espacer les boutons */
-    width: auto; /* Ajuste la largeur au contenu */
-    display: inline-block; /* Pour que les boutons soient côte à côte */
-}
-
-.action-button a {
-    color: white; /* Couleur du texte du lien à l'intérieur du bouton */
-    text-decoration: none; /* Supprime le soulignement par défaut des liens */
-    display: block; /* Permet au lien de remplir le bouton */
-}
-
-.action-button:hover {
-    background-color: #d2b48c; /* Beige pour le survol */
-    border-color: #d2b48c;
-    transform: translateY(-3px); /* Petit effet de soulèvement */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.action-button:hover a {
-    color: #081c37; /* Texte bleu marine au survol */
-}
-
-.button-group {
-    display: flex; /* Utilise Flexbox pour aligner les boutons */
-    justify-content: center; /* Centre les boutons horizontalement */
-    margin-top: 2rem; /* Espace entre le titre et les boutons */
-    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne sur les petits écrans */
-}
-
-.button-group > div {
-    margin: 5px; /* Petit espace entre les conteneurs de boutons */
-}
-
-/* Styles pour le bouton "Sign Up" (anciennement .sign) - non utilisé ici car .action-button est plus générique */
+/* Styles pour le bouton "Login" */
 .sign {
     margin-top: 2rem;
 }
 
-.sign button {
+.sign .action-button { /* Apply the existing action-button styles */
     background-color: transparent; /* Bouton transparent */
     color: #081c37; /* Texte bleu marine */
     padding: 10px 25px;
@@ -157,24 +122,41 @@ body {
     display: inline-block;
 }
 
-.sign button a {
+.sign .action-button a {
     color: #081c37;
     text-decoration: none;
     display: block;
 }
 
-.sign button:hover {
+.sign .action-button:hover {
     background-color: #d2b48c; /* Beige pour le survol */
     border-color: #d2b48c;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.sign button:hover a {
+.sign .action-button:hover a {
     color: #081c37; /* Texte bleu marine au survol */
 }
 
-/* Styles existants pour l'en-tête et le pied de page (si utilisés) */
+/* --- Unused styles from previous context (kept for completeness as per your original request) --- */
+.titre p {
+    font-size: 1.5rem; /* Ajustez la taille selon vos préférences */
+    color: #555; /* Couleur plus douce pour le paragraphe */
+    margin-bottom: 0.5rem;
+}
+
+.button-group {
+    display: flex; /* Utilise Flexbox pour aligner les boutons */
+    justify-content: center; /* Centre les boutons horizontalement */
+    margin-top: 2rem; /* Espace entre le titre et les boutons */
+    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne sur les petits écrans */
+}
+
+.button-group > div {
+    margin: 5px; /* Petit espace entre les conteneurs de boutons */
+}
+
 header {
     background: linear-gradient(135deg, #6a11cb 0%, #081c37 100%);
     color: white;
@@ -195,7 +177,6 @@ footer {
     z-index: 1000;
 }
 
-/* Autres styles existants (non directement liés à la page de connexion mais conservés) */
 .employee tr td a {
     text-decoration: none;
     color: #6b11cbc7;
