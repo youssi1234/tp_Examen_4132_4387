@@ -32,7 +32,7 @@
                     <li class="nav-item">
                         <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'filtre.php') ? 'active' : '' ?>"
                             href="../pages/filtre.php">
-                            <i class="bi bi-search me-2"></i>
+                            <i class="bi bi-filter me-2"></i>
                             Filtre
                         </a>
                     </li>
@@ -40,7 +40,7 @@
                     <li class="nav-item">
                         <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'liste.php') ? 'active' : '' ?>"
                             href="../pages/liste.php">
-                            <i class="bi bi-briefcase me-2"></i> Liste
+                            <i class="bi bi-list me-2"></i> Liste
                         </a>
                     </li>
                 
