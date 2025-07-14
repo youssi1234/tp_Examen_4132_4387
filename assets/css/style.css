@@ -447,3 +447,343 @@ input[type="file"] {
         font-size: 0.95rem;
     }
 }
+
+@media (max-width: 768px) {
+    .contain {
+        padding: 2rem;
+    }
+
+    .titre h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .titre p {
+        font-size: 1.2rem;
+    }
+
+    .contain form p input[type="text"],
+    .contain form p input[type="password"],
+    .contain form p input[type="email"],
+    .contain form p input[type="date"],
+    textarea {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .contain form input[type="submit"],
+    .button-group button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        align-items: center; /* Center stacked buttons */
+        gap: 15px; /* Maintain gap between stacked buttons */
+    }
+
+    .button-group button {
+        width: 100%; /* Make buttons full width when stacked */
+        max-width: 300px; /* Limit max width for readability */
+    }
+}
+
+@media (max-width: 480px) {
+    .contain {
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+
+    .titre h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .titre p {
+        font-size: 1rem;
+    }
+
+    .contain form p input[type="text"],
+    .contain form p input[type="password"],
+    .contain form p input[type="email"],
+    .contain form p input[type="date"],
+    textarea {
+        width: 100%;
+        padding: 10px 15px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .contain form input[type="submit"],
+    .button-group button {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+}
+
+/* --- Base Styles (as provided and untouched) --- */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f8f8; /* Gris clair pour le fond de la page */
+    color: #333;
+}
+
+/* Styles pour le conteneur principal de la page */
+.main-container {
+    min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Ajout de padding pour les petits écrans */
+}
+
+/* Styles pour le conteneur du formulaire */
+.contain {
+    background-color: #ffffff; /* Fond blanc pour le bloc central */
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    text-align: center;
+    max-width: 500px;
+    width: 100%; /* S'adapte à la largeur disponible */
+    box-sizing: border-box; /* Inclut le padding dans la largeur */
+}
+
+/* --- Specific Enhancements for Registration/Login Page --- */
+
+/* Styles pour le titre de la page d'accueil/formulaire */
+.titre h1 {
+    font-size: 3rem;
+    color: #081c37; /* Bleu marine pour le titre principal */
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère pour le texte */
+    line-height: 1.2;
+    font-weight: 700; /* Added for stronger visual hierarchy */
+}
+
+.titre p {
+    font-size: 1.5rem; /* Ajustez la taille selon vos préférences */
+    color: #555; /* Couleur plus douce pour le paragraphe */
+    margin-bottom: 0.5rem;
+    font-weight: 400; /* Ensure it's not too bold compared to h1 */
+}
+
+/* Style pour le message d'erreur */
+.erreur h3 {
+    color: #dc3545; /* Rouge pour les messages d'erreur */
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    background-color: rgba(220, 53, 69, 0.1); /* Light red background for error */
+    padding: 10px;
+    border-radius: 8px; /* Slightly more rounded corners for errors */
+    border: 1px solid #dc3545; /* Add a subtle border for definition */
+}
+
+/* General styles for form inputs (applied within .contain context) */
+.contain form p input[type="text"],
+.contain form p input[type="password"],
+.contain form p input[type="email"],
+.contain form p input[type="date"],
+textarea { /* Added textarea for consistency if used in other forms */
+    width: calc(100% - 40px); /* Takes almost full width with padding */
+    padding: 12px 20px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif; /* Explicitly set font-family */
+    color: #333; /* Ensure text color is consistent */
+    background-color: #fafafa; /* Slightly off-white background for inputs */
+}
+
+.contain form p input[type="text"]:focus,
+.contain form p input[type="password"]:focus,
+.contain form p input[type="email"]:focus,
+.contain form p input[type="date"]:focus,
+textarea:focus {
+    border-color: #081c37; /* Bleu marine pour la bordure au focus */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(8, 28, 55, 0.2); /* Ombre légère au focus */
+}
+
+.contain form p input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(0.5);
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing for textareas */
+    min-height: 100px; /* Minimum height for textareas */
+}
+
+/* Styles pour le bouton de soumission (Valider) */
+.contain form input[type="submit"] {
+    background-color: #081c37;
+    color: white;
+    padding: 12px 30px;
+    border: 2px solid #081c37;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    width: auto;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer initial shadow */
+}
+
+.contain form input[type="submit"]:hover {
+    background-color: #d2b48c;
+    border-color: #d2b48c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+    color: #081c37;
+}
+
+.contain form input[type="submit"]:active {
+    transform: translateY(0); /* Button presses down on active */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow on active */
+}
+
+/* Styles pour le groupe de boutons (S'inscrire, Se connecter) */
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 15px; /* Spacing between buttons */
+}
+
+.button-group button { /* Targeting the button elements directly */
+    background-color: transparent;
+    color: #081c37;
+    padding: 12px 25px; /* Slightly more padding for better touch targets */
+    border: 2px solid #081c37;
+    border-radius: 50px;
+    font-size: 1.1rem; /* Consistent font size with submit button */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Softer initial shadow */
+}
+
+.button-group button a { /* Target the anchor inside the button */
+    color: #081c37; /* Default link color */
+    text-decoration: none;
+    display: block; /* Make the link fill the button */
+    line-height: 1; /* Adjust line height to align text vertically */
+}
+
+.button-group button:hover {
+    background-color: #d2b48c;
+    border-color: #d2b48c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button-group button:hover a {
+    color: #081c37; /* Change text color on hover */
+}
+
+.button-group button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove margin from div wrappers in button-group for direct button spacing */
+.button-group > div {
+    margin: 0; /* Remove previous margins on the div wrappers */
+}
+
+/* Consolidated .sign styles into .button-group for better consistency */
+.sign {
+    margin-top: 2rem;
+    /* This class can still be used for overall section spacing if needed,
+       but the button styling is now handled by .button-group button. */
+}
+
+/* --- Responsive Design for Login/Registration Page --- */
+
+@media (max-width: 768px) {
+    .contain {
+        padding: 2rem;
+    }
+
+    .titre h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .titre p {
+        font-size: 1.2rem;
+    }
+
+    .contain form p input[type="text"],
+    .contain form p input[type="password"],
+    .contain form p input[type="email"],
+    .contain form p input[type="date"],
+    textarea {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .contain form input[type="submit"],
+    .button-group button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        align-items: center; /* Center stacked buttons */
+        gap: 15px; /* Maintain gap between stacked buttons */
+    }
+
+    .button-group button {
+        width: 100%; /* Make buttons full width when stacked */
+        max-width: 300px; /* Limit max width for readability */
+    }
+}
+
+@media (max-width: 480px) {
+    .contain {
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+
+    .titre h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .titre p {
+        font-size: 1rem;
+    }
+
+    .contain form p input[type="text"],
+    .contain form p input[type="password"],
+    .contain form p input[type="email"],
+    .contain form p input[type="date"],
+    textarea {
+        width: 100%;
+        padding: 10px 15px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .contain form input[type="submit"],
+    .button-group button {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+}
