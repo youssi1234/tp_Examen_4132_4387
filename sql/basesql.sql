@@ -27,7 +27,7 @@ CREATE TABLE exam_objet (
 );
 
 -- Correction de la table exam_images_obje
-CREATE TABLE exam_images_obje (
+CREATE TABLE exam_images_objet (
     id_image INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     id_objet INT NOT NULL, -- Ajout de NOT NULL
     nom_image VARCHAR(250),
@@ -120,4 +120,3 @@ INSERT INTO exam_emprunt (id_objet, id_membre, date_emprunt, date_retour) VALUES
 (7, 3, '2024-07-12 16:00:00', '2024-07-14 18:00:00'); -- Carole emprunte le robot pâtissier d'Alice
 
 
-UPDATE exam_emprunt SET date_retour = NULL WHERE date_retour = '9999-01-01';
