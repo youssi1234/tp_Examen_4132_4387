@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle ?? 'Titre par défaut'; ?></title>
+    <title><?php echo $pageTitle ?? 'Bienvenue'; ?></title>
 
     <link href="../assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/bootstrap-icons/bootstrap-icons.min.css">
@@ -13,10 +13,12 @@
 
 <body>
     <div class="main-container">
-        <div class="contain1">
-            <div class="contener">
-                <p>Bienvenue sur</p>
-                <h1>Nom de votre application</h1>
+        <div class="contain"> 
+            <div class="contener"> 
+                <div class="titre">
+                    <p>Bienvenue sur</p>
+                    <h1>Nom de votre application</h1>
+                </div>
                 <div class="button-group">
                     <div>
                         <button class="action-button"><a href="../pages/inscription.php">S'inscrire</a></button>
@@ -30,4 +32,3 @@
     </div>
 </body>
 </html>
-    
