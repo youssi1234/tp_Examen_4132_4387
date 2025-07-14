@@ -362,6 +362,7 @@ function get_desc_emprunt($id_membre,$id_emp){
 function modif_statut_emprunt($val, $id_emp){
     $sql = "UPDATE exam_emprunt
                 set statut = '%s', date_retour = CURDATE()
-                Where id_emprunt = '%s';"
+                Where id_emprunt = '%s';";
+                
 }
 ?>
