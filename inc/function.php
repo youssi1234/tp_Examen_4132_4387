@@ -288,5 +288,18 @@ function get_result_research($nom, $categorie, $check) {
     return $research;
 }
 
+function enprunt($id_obj ,$id_membre , $date) {
+    $sql = "INSERT INTO exam_emprunt VALUES 
+    (%d , %d , now() , $date);";
+    $sql = sprintf($sql , $id_obj ,$id_membre , $date );
+    $result = mysqli_query(dbconnect(), $sql);
+    if($result) {
+        return true;
+
+    }else {
+       echo " Erreur de requête SQL : " . mysqli_error($bdd) . "<br>Requête exécutée : " . $sql ;
+    }
+}
+
 
 ?>

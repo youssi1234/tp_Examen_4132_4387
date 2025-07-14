@@ -49,6 +49,12 @@
                             <i class="bi bi-search me-2"></i> Recherche
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'fiche_membre.php') ? 'active' : '' ?>"
+                            href="../pages/fiche_membre.php">
+                            <i class="bi bi-journal me-2"></i> Fiche
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div> 
