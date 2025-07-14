@@ -1,4 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $pageTitle ?? 'Titre par défaut'; ?></title>
 
+    <link href="../assets/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
     <div class="main-container">
         <div class="contain1">
             <div class="contener">
@@ -17,3 +30,4 @@
     </div>
 </body>
 </html>
+    
