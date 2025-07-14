@@ -1,35 +1,25 @@
 <?php
-session_start(); // 1. Démarre ou reprend la session.
-include('../inc/function2.php'); // 2. Inclut les fonctions de base de données.
+session_start();
+include('../inc/function.php');
 
-// 3. Sécurité : Vérifie que la requête est bien une requête POST (venant du formulaire)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../pages/publier.php'); // Redirige si la méthode n'est pas POST
-    exit(); // Arrête le script
+    header('Location: ../pages/publier.php');
+    exit();
 }
 
-// 4. Vérification de connexion de l'utilisateur (redondant mais sûr si trait_upload.php est accédé directement)
 
 
-$userId = $_SESSION['id_user'];
- // 5. Récupère l'ID de l'utilisateur connecté
+$userId = $_SESSION['idMembre'];
 
-// 6. Récupère la description de la publication
-$description = $_POST['description'] ?? ''; // Utilise l'opérateur de coalescence nul `??` pour éviter les erreurs si 'description' n'est pas défini
-
-// 7. Prépare les données pour l'insertion de la publication
 $pubData = array(
-    'texte' => $description,
-    'id_U'  => $userId
+    'idMembre'  => $userId
 );
 
-// 8. Insère la publication initiale dans la base de données
 $publicationId = insert_publication($pubData); // Appelle la fonction de function2.php
 if (!$publicationId) {
     die('Erreur lors de l\'insertion de la publication dans la base de données.'); // Gère l'erreur d'insertion
 }
 
-// 9. Gère le fichier téléchargé
 if (!isset($_FILES['media'])) { // Vérifie si un fichier a été envoyé
     die('Aucun fichier n\'a été envoyé.');
 }

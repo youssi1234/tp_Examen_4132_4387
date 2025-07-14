@@ -43,13 +43,7 @@
                             <i class="bi bi-list me-2"></i> Liste
                         </a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'publier.php') ? 'active' : '' ?>"
-                            href="../pages/publier.php">
-                            <i class="bi bi-upload"></i> Upload
-                        </a>
-                    </li>                
+               
                 </ul>
             </nav>
         </div> 

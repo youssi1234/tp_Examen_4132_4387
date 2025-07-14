@@ -7,7 +7,6 @@ $id_obj = $_SESSION['id_objet_rech'];
 $objet = get_obj_desc ($id_obj);
 
 $emprunt = get_historic_emprunt($id_obj);
-var_dump($emprunt);
 
 //
 // $pageTitle = htmlspecialchars($objet['dept_name'] . ' - ' . $objet['emp_no']);
@@ -20,6 +19,7 @@ require_once '../inc/header.php';
             <section class="row">
                 <aside class="col-2 justify-content-end"> 
                     <button type="button" class="lien btn btn-outline-primary"><a href="../pages/liste.php">Precedent</a></button>
+                    <button type="button" class="lien btn btn-outline-primary"><a href="../pages/publier.php?id=<?php $id_obj; ?>">Upload</a></button>
                 </aside>
 
                 <section class="col-md-10 d-flex justify-content-center">
