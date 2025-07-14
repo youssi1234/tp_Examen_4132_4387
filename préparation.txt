@@ -1,0 +1,25 @@
+O mettre public le gitHub : 
+
+O partager le lien avec le prof : 
+    _ prendre l'url du projet (ex: https://github.com/Hotiana09/test_4 )
+
+O Déploiment :
+    1_ connexion avec wifi de l'ecole
+    2_ taper l'URL dans n'importe quel serveur: "172.80.244.180/ETU004132"
+    3_ arrivé dans une page misy num ETU004132
+
+    BASE SQL ref handefa any am serveur
+        a_ connexion serveur base: mysql -u ETU004132 -h 172.60.0.15 -p
+        b_ mdp = pt8DU630
+        c_ seul database à utiliser : db_s2_ETU004132 
+            => differenciation projet: usage underscore : ex: garage_nomtable
+
+    172.80.244.180/ETU004132
+
+============== >>>>>> adress IP: 172.60.0.15
+
+O critère : 
+    _ eviter les codes qui se répète
+    _ usage icone 
+    _ formatage des date 
+    _ practique et intuitive

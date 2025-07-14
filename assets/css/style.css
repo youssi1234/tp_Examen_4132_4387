@@ -1,135 +1,251 @@
-/* color : bleu marine, gris, beige */
+body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f8f8; /* Gris clair pour le fond de la page */
+            color: #333;
+        }
 
-.employee tr td a {
-  text-decoration: none;
-  color: #6b11cbc7;
-  font-weight: bold;
-}
+        /* Styles pour le conteneur principal de la page */
+        .main-container {
+            min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px; /* Ajout de padding pour les petits écrans */
+        }
 
-.employee tr td a:hover {
-  width: 40px;
-  color: White;
-  background-color: #6a11cb;
-  border-radius: 5px;
+        /* Styles pour le conteneur du formulaire de connexion */
+        .contain { /* Renommé de .contain1 pour correspondre à votre HTML */
+            background-color: #ffffff; /* Fond blanc pour le bloc central */
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Ombre douce */
+            text-align: center;
+            max-width: 500px;
+            width: 100%; /* S'adapte à la largeur disponible */
+            box-sizing: border-box; /* Inclut le padding dans la largeur */
+        }
 
+        /* Styles pour le titre du formulaire */
+        .titre h1 {
+            font-size: 3rem;
+            color: #081c37; /* Bleu marine pour le titre principal */
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère pour le texte */
+            line-height: 1.2;
+        }
 
-}
+        /* Style pour le message d'erreur */
+        .contain h3 {
+            color: #dc3545; /* Rouge pour les messages d'erreur */
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
 
-.employee tr th , .employee tr td {
-  text-align: center;
-}
+        /* Styles pour les champs de saisie du formulaire */
+        .contain form p input[type="email"],
+        .contain form p input[type="password"] {
+            width: calc(100% - 40px); /* Prend presque toute la largeur avec padding */
+            padding: 12px 20px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+        }
 
+        .contain form p input[type="email"]:focus,
+        .contain form p input[type="password"]:focus {
+            border-color: #081c37; /* Bordure bleue marine au focus */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(8, 28, 55, 0.2); /* Ombre légère au focus */
+        }
 
-header {
-    background: linear-gradient(135deg, #6a11cb 0%,  #081c37 100%);
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-        
-.header-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
+        /* Styles pour le bouton de soumission (Valider) */
+        .contain form input[type="submit"] {
+            background-color: #081c37; /* Bleu marine pour le fond du bouton */
+            color: white;
+            padding: 12px 30px;
+            border: 2px solid #081c37;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            width: auto; /* Ajuste la largeur au contenu */
+            display: inline-block; /* Pour centrer le bouton */
+        }
 
-.nav-pills {
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 50px;
-    padding: 0.5rem;
-    margin: 0 auto;
-    max-width: fit-content;
-}
+        .contain form input[type="submit"]:hover {
+            background-color: #d2b48c; /* Beige pour le survol */
+            border-color: #d2b48c;
+            transform: translateY(-3px); /* Petit effet de soulèvement */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: #081c37; /* Texte bleu marine au survol */
+        }
 
-.nav-link {
-    color: white !important;
-    margin: 0 5px;
-    border-radius: 50px !important;
-    transition: all 0.3s ease;
-}
+        /* Styles pour le bouton "Sign Up" */
+        .sign {
+            margin-top: 2rem;
+        }
 
-.nav-link:hover {
-    background-color: rgba(255,255,255,0.2) !important;
-    transform: translateY(-2px);
-}
+        .sign button {
+            background-color: transparent; /* Bouton transparent */
+            color: #081c37; /* Texte bleu marine */
+            padding: 10px 25px;
+            border: 2px solid #081c37;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-.nav-link.active {
-    background-color: white !important;
-    color:  #081c37 !important;
-    font-weight: 500;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+        .sign button a {
+            color: #081c37;
+            text-decoration: none;
+            display: block;
+        }
 
+        .sign button:hover {
+            background-color: #d2b48c; /* Beige pour le survol */
+            border-color: #d2b48c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
 
-.identite i{
-  color: #081c37;
-  font-size: 100px;
-  margin-right: 10px;
-  align-items: center;
-}
+        .sign button:hover a {
+            color: #081c37; /* Texte bleu marine au survol */
+        }
 
-.card-title{
-  color: #aebaca;
-  font-weight: bold;
-  margin-top: 10px;
+        /* Styles existants pour l'en-tête et le pied de page (si utilisés) */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #081c37 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-}
+        footer {
+            background: linear-gradient(135deg, #6a11cb 0%, #081c37 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            bottom: 0;
+            z-index: 1000;
+        }
 
-.card-subtitle {
-  font-style: italic;
-  font-weight: lighter;
-}
+        /* Autres styles existants (non directement liés à la page de connexion mais conservés) */
+        .employee tr td a {
+            text-decoration: none;
+            color: #6b11cbc7;
+            font-weight: bold;
+        }
 
-.card-subtitle  i, .card-text i {
-  color: #d2b48c;
-  font-weight: bold;
-  font-size: 20px;
-}
+        .employee tr td a:hover {
+            color: White;
+            background-color: #6a11cb;
+            border-radius: 5px;
+        }
 
-.employee thead tr th {
-    background-color: #081c37;
-    color: white;
-}
+        .employee tr th, .employee tr td {
+            text-align: center;
+        }
 
-button a{
-  text-decoration: none;
-}
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
 
-button btn-link{
-  background-color: #081c37;
-  color: #d2b48c;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-}
+        .nav-pills {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            padding: 0.5rem;
+            margin: 0 auto;
+            max-width: fit-content;
+        }
 
-.lien {
-  margin-bottom: 5px;
-  border-color: #081c37;
-  border-radius: 50px;
-}
+        .nav-link {
+            color: white !important;
+            margin: 0 5px;
+            border-radius: 50px !important;
+            transition: all 0.3s ease;
+        }
 
-.lien a {
-  color: #081c37;
-  text-decoration: none;
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.2) !important;
+            transform: translateY(-2px);
+        }
 
-}
+        .nav-link.active {
+            background-color: white !important;
+            color: #081c37 !important;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.lien:hover {
-    background-color: #6a11cb !important;
-    transform: translateY(-2px);
-    border-color: #6a11cb;
-    color: #6a11cb;
-    
-}
+        .identite i{
+            color: #081c37;
+            font-size: 100px;
+            margin-right: 10px;
+            align-items: center;
+        }
 
-.lien a:hover {
-    color: white;
-    transform: translateY(-2px);
-    border-color: #6a11cb;
-    
-}
+        .card-title{
+            color: #aebaca;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .card-subtitle {
+            font-style: italic;
+            font-weight: lighter;
+        }
+
+        .card-subtitle i, .card-text i {
+            color: #d2b48c; /* Beige pour les icônes */
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .employee thead tr th {
+            background-color: #081c37;
+            color: white;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .header-logo {
+            width: 20%;
+            height: 20%;
+            max-width: none;
+            height: auto;
+        }
+
+        /* Media queries pour la responsivité */
+        @media (max-width: 600px) {
+            .titre h1 {
+                font-size: 2.2rem; /* Réduire la taille du titre sur mobile */
+            }
+            .contain {
+                padding: 1.5rem; /* Réduire le padding sur mobile */
+            }
+            .sign button {
+                width: 100%; /* Bouton pleine largeur sur mobile */
+                box-sizing: border-box;
+            }
+        }
