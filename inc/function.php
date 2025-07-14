@@ -220,4 +220,73 @@ function get_historic_emprunt($id_obj){
     mysqli_free_result($req);
     return $result;
 }
+
+function get_result_research($nom, $categorie, $check) {
+    $bdd = dbconnect(); 
+
+    $sql = "
+        SELECT
+            obj.id_objet,
+            obj.nom_objet,
+            cat.nom_categorie,
+            cat.id_categorie,
+            emp.date_retour,
+            mb.nom,
+            CASE
+                WHEN emp.date_retour IS NULL THEN 'Non'
+                ELSE 'Oui'
+            END AS est_disponible
+        FROM exam_objet AS obj
+        JOIN exam_categorie_objet AS cat
+        ON obj.id_categorie = cat.id_categorie
+        LEFT JOIN exam_emprunt AS emp
+        ON obj.id_objet = emp.id_objet AND emp.date_retour IS NULL -- Important : pour l'état d'emprunt actuel
+        LEFT JOIN exam_membre AS mb
+        ON emp.id_membre = mb.id_membre -- Correction: mb.id_membre joint avec emp.id_membre
+        WHERE 1=1"; 
+    if (!empty($nom) && empty($categorie) && empty($check)) {
+        $sql .= " AND obj.nom_objet LIKE '%$nom%'";
+
+    } else if (empty($nom) && !empty($categorie) && empty($check)) {
+        $sql .= " AND cat.id_categorie = $categorie"; 
+    } else if (empty($nom) && empty($categorie) && !empty($check)) {
+        $sql .= " AND emp.id_objet IS NULL"; 
+    } else if (!empty($nom) && !empty($categorie) && empty($check)) {
+        $sql .= " AND obj.nom_objet LIKE '%$nom%'";
+        $sql .= " AND cat.id_categorie = $categorie";
+    } else if (!empty($nom) && empty($categorie) && !empty($check)) {
+        $sql .= " AND obj.nom_objet LIKE '%$nom%'";
+        $sql .= " AND emp.id_objet IS NULL";
+    } else if (empty($nom) && !empty($categorie) && !empty($check)) {
+        $sql .= " AND cat.id_categorie = $categorie";
+        $sql .= " AND emp.id_objet IS NULL";
+    } else if (!empty($nom) && !empty($categorie) && !empty($check)) {
+        $sql .= " AND obj.nom_objet LIKE '%$nom%'";
+        $sql .= " AND cat.id_categorie = $categorie";
+        $sql .= " AND emp.id_objet IS NULL";
+    } else {
+    }
+
+
+    $sql .= " ORDER BY obj.nom_objet ASC"; 
+
+    $result = mysqli_query($bdd, $sql);
+
+    if (!$result) {
+        die("Erreur de requête SQL : " . mysqli_error($bdd) . "<br>Requête exécutée : " . $sql);
+    }
+
+    $research = array();
+    while($donnee = mysqli_fetch_assoc($result)){
+        $research[] = $donnee;
+    }
+
+    mysqli_free_result($result);
+    mysqli_close($bdd); 
+    
+    
+    return $research;
+}
+
+
 ?>
