@@ -363,6 +363,7 @@ function modif_statut_emprunt($val, $id_emp){
     $sql = "UPDATE exam_emprunt
                 set statut = '%s', date_retour = CURDATE()
                 Where id_emprunt = '%s';";
-                
+    $query_to_execute = sprintf($sql, $val,$id_emp);
+    $req = mysqli_query(dbconnect(), $query_to_execute); 
 }
 ?>
