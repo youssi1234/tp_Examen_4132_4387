@@ -43,7 +43,12 @@
                             <i class="bi bi-list me-2"></i> Liste
                         </a>
                     </li>
-               
+                                   <li class="nav-item">
+                        <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == 'recherche.php') ? 'active' : '' ?>"
+                            href="../pages/recherche.php">
+                            <i class="bi bi-search me-2"></i> Recherche
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div> 
