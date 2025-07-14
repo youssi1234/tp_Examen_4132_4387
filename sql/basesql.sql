@@ -120,3 +120,4 @@ INSERT INTO exam_emprunt (id_objet, id_membre, date_emprunt, date_retour) VALUES
 (7, 3, '2024-07-12 16:00:00', '2024-07-14 18:00:00'); -- Carole emprunte le robot pâtissier d'Alice
 
 
+ALTER TABLE exam_emprunt ADD statut VARCHAR(100);

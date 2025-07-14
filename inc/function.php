@@ -46,6 +46,25 @@ function get_membre($membre)
     return $result;
 }
 
+function get_desc_membre($id_membre)
+{
+    $sql = "SELECT * FROM exam_membre WHERE id_membre = '%s';";
+    $sql = sprintf($sql,$id_membre);
+    $membre_req = mysqli_query(dbconnect(), $sql);
+
+    $result = array();
+    while ($membre = mysqli_fetch_assoc($membre_req)) {
+        $result['id_membre'] = $membre['id_membre'];
+        $result['nom'] = $membre['nom'];
+        $result['genre'] = $membre['genre'];
+        $result['ville'] = $membre['ville'];
+        $result['email'] = $membre['email'];
+        $result['ddns'] = $membre['ddns'];
+        $result['image_profil'] = $membre['image_profil'];
+    }
+    mysqli_free_result($membre_req);
+    return $result;
+}
 
 // function get_all_membre($idmandefa)
 // {
@@ -130,7 +149,8 @@ function create_v_obj_lib(){
                 cat.nom_categorie,
                 cat.id_categorie,
                 emp.date_retour,
-                mb.nom          
+                mb.nom,
+                mb.genre          
             FROM exam_objet AS obj
             JOIN exam_categorie_objet AS cat 
             ON obj.id_categorie = cat.id_categorie
@@ -211,6 +231,25 @@ function get_historic_emprunt($id_obj){
                 ORDER BY emp.date_emprunt DESC;";
 
     $query_to_execute = sprintf($sql, $id_obj);
+    $req = mysqli_query(dbconnect(), $query_to_execute);
+
+    $result = array();
+    while($donnee = mysqli_fetch_assoc($req)){
+        $result[] = $donnee;
+    }
+    mysqli_free_result($req);
+    return $result;
+}
+
+
+function get_historic_desc_emprunt($id_membre){
+    $sql = " SELECT
+                emp.id_emprunt, emp.date_emprunt, emp.date_retour
+                from exam_emprunt as emp
+                where emp.id_membre = '%s'
+                ORDER BY emp.date_emprunt DESC;";
+
+    $query_to_execute = sprintf($sql, $id_membre);
     $req = mysqli_query(dbconnect(), $query_to_execute);
 
     $result = array();
@@ -302,4 +341,27 @@ function enprunt($id_obj ,$id_membre , $date) {
 }
 
 
+function get_desc_emprunt($id_membre,$id_emp){
+    $sql = " SELECT
+                emp.id_emprunt, emp.date_emprunt, emp.date_retour
+                from exam_emprunt as emp
+                where emp.id_membre = '%s' and emp.id_emprunt = '%s'
+                ORDER BY emp.date_emprunt DESC;";
+
+    $query_to_execute = sprintf($sql, $id_membre,$id_emp);
+    $req = mysqli_query(dbconnect(), $query_to_execute);
+
+    $result = array();
+    while($donnee = mysqli_fetch_assoc($req)){
+        $result[] = $donnee;
+    }
+    mysqli_free_result($req);
+    return $result;
+}
+
+function modif_statut_emprunt($val, $id_emp){
+    $sql = "UPDATE exam_emprunt
+                set statut = '%s', date_retour = CURDATE()
+                Where id_emprunt = '%s';"
+}
 ?>

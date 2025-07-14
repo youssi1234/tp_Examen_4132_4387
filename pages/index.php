@@ -13,7 +13,7 @@
             <div class="contener"> 
                 <div class="titre">
                     <p>Bienvenue sur</p>
-                    <h1>Nom de votre application</h1>
+                    <h1>HY industry</h1>
                 </div>
                 <div class="button-group">
                     <div>

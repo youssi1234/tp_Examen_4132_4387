@@ -2,11 +2,12 @@
 include('../inc/function.php');
 session_start();
 
-$id_obj = $_SESSION['id_objet_rech'];
 
-$objet = get_obj_desc ($id_obj);
+$id_membre = $_SESSION['idMembre'];
 
-$emprunt = get_historic_emprunt($id_obj);
+$pers = get_desc_membre ($id_membre);
+
+$emprunt = get_historic_desc_emprunt($id_membre);
 
 require_once '../inc/header.php'; 
 
@@ -17,11 +18,11 @@ require_once '../inc/header.php';
             <section class="row">
                 <aside class="col-2 justify-content-end"> 
                     <button type="button" class="lien btn btn-outline-primary"><a href="../pages/liste.php">Precedent</a></button>
-                    <button type="button" class="lien btn btn-outline-primary"><a href="../pages/publier.php?id=<?php $id_obj; ?>">Upload</a></button>
+                    <button type="button" class="lien btn btn-outline-primary"><a href="../pages/publier.php?id=<?php $id_membre; ?>">Upload</a></button>
                 </aside>
 
                 <section class="col-md-10 d-flex justify-content-center">
-                    <?php if (!empty($objet)): ?>
+                    <?php if (!empty($pers)): ?>
                         <article class="card" style="width: 30rem;">
                             <div class="card-body row">
                     
@@ -29,16 +30,25 @@ require_once '../inc/header.php';
                                     <i class="bi bi-person-badge-fill"></i>                                
                                 </div>
                                 <div class="col-8">
-                                <h5 class="card-title"><?= $objet['nom_objet']; ?></h5>
+                                <h5 class="card-title"><?= $pers['nom']; ?></h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">
+                                    <?php if($pers['genre'] == 'F'){?>    
+                                <i class="bi bi-gender-female"></i> 
+                                <?php } else { ?>
+                                <i class="bi bi-gender-male"></i> 
+                                <?php } ?>
+                                <?= $pers['genre']?></h6>
                                 
-                                <p class="card-text" style="width:150px;"><i class="bi bi-person-check"></i> <?= $objet['nom']?>
-                                </br><i class="bi bi-tags"></i></i> <?= $objet['nom_categorie']?>
+                                <p class="card-text" style="width:150px;"><i class="bi bi-cake"></i> <?= $pers['ddns']?>
+                                </br><i class="bi bi-envelope-at"></i> <?= $pers['email']?>
+                                </br><i class="bi bi-house-gear-fill"></i> <?= $pers['ville']?>
                                     </div>
+                            </div>
                             </div>
                         </article>
 
                     <?php else: ?>
-                        <p class="alert alert-warning">objet $objet data not found.</p>
+                        <p class="alert alert-warning">$pers data not found.</p>
                     <?php endif; ?>
                 </section>
             </section>
@@ -55,12 +65,13 @@ require_once '../inc/header.php';
                         </h5>
                         <div class="collapse" id="histo_salaire">
                         <?php if (!empty($emprunt)): ?>
-                            <table class="objet$objet table"> 
+                            <table class="pers$pers table"> 
                                 <thead>
                                     <tr>
                                         <th scope="col">Debut</th>
                                         <th scope="col">Fin</th>
                                         <th scope="col">id</th>
+                                        <th scope="col">Retour</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,6 +83,8 @@ require_once '../inc/header.php';
                             <?php } else { ?>
                                 <td> - </td> <?php }?>
                                             <td><?= $donnee['id_emprunt']?></td>
+                                            <td><a href="../pages/return.php?id_emp=<?= $donnee['id_emprunt']?>"><i class="bi-arrow-counterclockwise"></i></a></td>
+
                                         </tr>
                                     <?php } ?>
                                 </tbody>
