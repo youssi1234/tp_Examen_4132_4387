@@ -112,11 +112,11 @@ INSERT INTO exam_emprunt (id_objet, id_membre, date_emprunt, date_retour) VALUES
 (17, 1, '2024-02-01 11:30:00', '2024-02-05 16:00:00'), -- Alice emprunte le mixeur de Bob
 (23, 4, '2024-03-05 09:00:00', '2024-03-10 12:00:00'), -- David emprunte la ponceuse de Carole
 (37, 3, '2024-04-12 15:00:00', '2024-04-18 10:00:00'), -- Carole emprunte la friteuse de David
-(1, 2, '2024-05-20 08:00:00', NULL), -- Bob emprunte le kit de maquillage d'Alice (non retourné)
-(11, 1, '2024-06-01 13:00:00', NULL), -- Alice emprunte le vernis à ongles de Bob (non retourné)
+(1, 2, '2024-05-20 08:00:00', '2024-05-25 10:00:00'), -- Bob emprunte le kit de maquillage d'Alice
+(11, 1, '2024-06-01 13:00:00', '2024-06-04 09:00:00'), -- Alice emprunte le vernis à ongles de Bob
 (5, 4, '2024-06-15 10:00:00', '2024-06-20 11:00:00'), -- David emprunte la clé à molette d'Alice
 (25, 1, '2024-07-01 14:00:00', '2024-07-03 16:00:00'), -- Alice emprunte le multimètre de Carole
-(31, 2, '2024-07-10 09:00:00', NULL), -- Bob emprunte la trousse de rasage de David (non retourné)
+(31, 2, '2024-07-10 09:00:00', '2024-07-13 12:30:00'), -- Bob emprunte la trousse de rasage de David
 (7, 3, '2024-07-12 16:00:00', '2024-07-14 18:00:00'); -- Carole emprunte le robot pâtissier d'Alice
 
 
