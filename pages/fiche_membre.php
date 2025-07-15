@@ -27,7 +27,11 @@ require_once '../inc/header.php';
                             <div class="card-body row">
                     
                             <div class="identite col-4">
-                                    <i class="bi bi-person-badge-fill"></i>                                
+                                <?php if (!empty($pers['image_profil'])) { ?>
+                                    <img src="../assets/image/profil/<?php echo $pers['image_profil']; ?>" alt="Image de profil" class="img-fluid rounded margin-0">
+                                    <?php } else { ?>
+                                    <i class="bi bi-person-badge-fill"></i>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-8">
                                 <h5 class="card-title"><?= $pers['nom']; ?></h5>
