@@ -99,17 +99,23 @@ function get_liste_objet()
 {
     $conn = dbconnect();
 
+
     $sql = "SELECT
                 obj.id_objet,
                 obj.nom_objet,
                 cat.nom_categorie,
-                emp.date_retour
+                emp.date_emprunt,
+                emp.date_retour,
+                mb.id_membre,
+                mb.nom
             FROM
                 exam_objet AS obj
             JOIN
                 exam_categorie_objet AS cat ON obj.id_categorie = cat.id_categorie
             LEFT JOIN
-                exam_emprunt AS emp ON obj.id_objet = emp.id_objet;"; 
+                exam_emprunt AS emp ON obj.id_objet = emp.id_objet
+            LEFT JOIN 
+                exam_membre AS mb ON obj.id_membre = mb.id_membre;"; 
 
     $result = mysqli_query($conn, $sql);
 
@@ -279,9 +285,9 @@ function get_result_research($nom, $categorie, $check) {
         JOIN exam_categorie_objet AS cat
         ON obj.id_categorie = cat.id_categorie
         LEFT JOIN exam_emprunt AS emp
-        ON obj.id_objet = emp.id_objet AND emp.date_retour IS NULL -- Important : pour l'état d'emprunt actuel
+        ON obj.id_objet = emp.id_objet AND emp.date_retour IS NULL
         LEFT JOIN exam_membre AS mb
-        ON emp.id_membre = mb.id_membre -- Correction: mb.id_membre joint avec emp.id_membre
+        ON emp.id_membre = mb.id_membre
         WHERE 1=1"; 
     if (!empty($nom) && empty($categorie) && empty($check)) {
         $sql .= " AND obj.nom_objet LIKE '%$nom%'";
@@ -327,21 +333,28 @@ function get_result_research($nom, $categorie, $check) {
     return $research;
 }
 
-function enprunt($id_obj ,$id_membre , $date) {
-    $sql = "INSERT INTO exam_emprunt VALUES 
-    (%d , %d , now() , $date);";
-    $sql = sprintf($sql , $id_obj ,$id_membre , $date );
-    $result = mysqli_query(dbconnect(), $sql);
+function emprunt($id_obj ,$id_membre , $jour) {
+
+    $new_date_retour = date('Y-m-d', strtotime("+$jour days"));
+
+
+    $bdd = dbconnect(); 
+    $sql2 = "INSERT INTO exam_emprunt(id_objet,id_membre,date_emprunt,date_retour) VALUES 
+    (%d , %d , now() , '%s');";
+    $sql2 = sprintf($sql2 , $id_obj, $id_membre, $new_date_retour );
+    $result = mysqli_query($bdd, $sql2);
+
     if($result) {
         return true;
 
     }else {
-       echo " Erreur de requête SQL : " . mysqli_error($bdd) . "<br>Requête exécutée : " . $sql ;
+       echo " Erreur de requête SQL : " . mysqli_error($bdd) . "<br>Requête exécutée : " . $sql2 ;
     }
 }
 
 
 function get_desc_emprunt($id_membre,$id_emp){
+    $bdd = dbconnect(); 
     $sql = " SELECT
                 emp.id_emprunt, emp.date_emprunt, emp.date_retour
                 from exam_emprunt as emp
@@ -349,7 +362,7 @@ function get_desc_emprunt($id_membre,$id_emp){
                 ORDER BY emp.date_emprunt DESC;";
 
     $query_to_execute = sprintf($sql, $id_membre,$id_emp);
-    $req = mysqli_query(dbconnect(), $query_to_execute);
+    $req = mysqli_query($bdd, $query_to_execute);
 
     $result = array();
     while($donnee = mysqli_fetch_assoc($req)){

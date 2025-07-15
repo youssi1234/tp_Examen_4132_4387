@@ -17,7 +17,7 @@
         <div class="row align-items-center">
             <div class="col-3">
                 <a class="navbar-brand" href="../index.php">
-                    <img src="../assets/image/logo.svg" alt="Nom du Logo" class="header-logo"> </a>
+                    <img src="../assets/image/logo/logo.svg" alt="Nom du Logo" class="header-logo"> </a>
             </div>
             
             <nav class="col-9">
