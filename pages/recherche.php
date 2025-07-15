@@ -7,9 +7,9 @@ session_start();
 
 $catg = get_liste_categorie();
 
-$selected_categorie_id = isset($_POST['categorie']) ? $_POST['categorie'] : '';
-$selected_nom_objet = isset($_POST['nom']) ? $_POST['nom'] : '';
-$checkbox_disponible = isset($_POST['check_categorie']) && $_POST['check_categorie'] == '1';
+$selected_categorie_id = isset($_GET['categorie']) ? $_GET['categorie'] : '';
+$selected_nom_objet = isset($_GET['nom']) ? $_GET['nom'] : '';
+$checkbox_disponible = isset($_GET['check_categorie']) && $_GET['check_categorie'] == '1';
 
 ?>
 

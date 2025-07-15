@@ -4,9 +4,9 @@ session_start();
 
 if(isset($_POST['categorie']) || isset($_POST['nom']) || isset($_POST['check_categorie'])) { 
     $_SESSION['info'] = array(
-        'categorie' => $_POST['categorie'] ?? '', 
-        'nom' => $_POST['nom'] ?? '',
-        'check_categorie' => $_POST['check_categorie'] ?? '', 
+        'categorie' => $_POST['categorie'], 
+        'nom' => $_POST['nom'],
+        'check_categorie' => $_POST['check_categorie'], 
     );
 } else {
     $_SESSION['info'] = array(
@@ -17,6 +17,6 @@ if(isset($_POST['categorie']) || isset($_POST['nom']) || isset($_POST['check_cat
 }
 
 
-header("Location: ../pages/recherche.php?research=1"); 
+header("Location: ../pages/recherche.php?research=1&cat={$_SESSION['info']['categorie']}&nom={$_SESSION['info']['nom']}&check_categorie={$_SESSION['info']['check_categorie']}"); 
 
 ?>
